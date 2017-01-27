@@ -1,0 +1,27 @@
+{
+  "name": "human-error",
+  "version": "0.1.0",
+  "description": "Errors that people can understand",
+  "main": "human-error.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscop/human-error.git"
+  },
+  "keywords": [
+    "error",
+    "generate",
+    "pretty",
+    "print",
+    "show",
+    "mistake"
+  ],
+  "author": "Francisco Presencia <public@francisco.io> (http://francisco.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscop/human-error/issues"
+  },
+  "homepage": "https://github.com/franciscop/human-error#readme"
+}

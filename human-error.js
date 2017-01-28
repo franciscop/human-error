@@ -17,7 +17,7 @@ const line = (msg = '', width = 80) => {
 };
 
 
-const errorFactory = ({ url, width = 80 } = {}) => {
+const errorFactory = ({ url, width = 80, plain } = {}) => {
   const errors = {};
   return new Proxy(function(obj){
     let autoerror = errorFactory();
@@ -43,10 +43,25 @@ const errorFactory = ({ url, width = 80 } = {}) => {
           .replace(/\ +$/mg, '');  // Remove ending indentation
         let errorUrl = false;
         if (url) {
-          errorUrl = `
-            │ ${line(`Info: ${url instanceof Function ? url(key) : url}`, width)} │
-          `.replace(/^\ +/mg, '');
+          const realUrl = url instanceof Function ? url(key) : url;
+          if (plain) {
+            errorUrl = '\nMore info: ' + realUrl;
+          } else {
+            errorUrl = `
+              │ ${line(`Info: ${realUrl}`, width)} │
+            `.replace(/^\ +/mg, '');
+          }
         }
+        if (plain) {
+          return new Error('\n' + `
+            Error: ${key}
+            Message: ${errorMsg}
+            Code: ${key}
+            URL: ${errorUrl ? errorUrl : ''}
+            Arguments: ${JSON.stringify(opts, null, 2)}
+          `.replace(/^\s+/mg, ''));
+        }
+
         return new Error('\n' + `
           ┌${char('─',  width - 2)}┐
           │ ${line(key + ' Error', width)} │

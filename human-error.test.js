@@ -66,6 +66,20 @@ describe('human-error', () => {
     let msg = errors.SaveOne().message;
     expect(msg.includes('https://example.com/')).toBe(true);
   });
+
+  it('can generate a plain one without url', () => {
+    const errors = require('./human-error')({ plain: true });
+    errors.SaveOne = () => 'Hello world';
+    let msg = errors.SaveOne().message;
+    expect(msg.includes('┌')).toBe(false);
+  });
+
+  it('can generate a plain one with url', () => {
+    const errors = require('./human-error')({ url: 'https://example.com/', plain: true });
+    errors.SaveOne = () => 'Hello world';
+    let msg = errors.SaveOne().message;
+    expect(msg.includes('┌')).toBe(false);
+  });
 });
 
 

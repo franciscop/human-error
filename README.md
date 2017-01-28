@@ -59,3 +59,4 @@ module.exports = (cb) => {
 
 - `url` [false]: if there's an url to show more info. It can be a string in which case it will just be printed or a function that build the error such as `(key) => 'https://example.com/errors#' + key` so you can show the appropriate support url.
 - `width` [80]: the minimum width of the row. It cannot cut strings since links shouldn't be cut.
+- `plain` [false]: avoid generating a table and using plain-text only, in case some things break.

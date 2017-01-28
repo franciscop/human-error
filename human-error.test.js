@@ -13,7 +13,7 @@ describe('human-error', () => {
   it('throws error if not defined', () => {
     errors.One = () => '';
     errors.Two = () => '';
-    expect(() => errors.Three()).not.toThrow();
+    expect(() => errors.Three()).toThrow();
   });
 
   it('can add an error', () => {

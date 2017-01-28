@@ -1,6 +1,6 @@
 # human-error
 
-Good errors for people to read:
+Allows you to write errors so people can understand:
 
 | [![Show an error in the code](img/meta-run.png)](img/meta-run.png)  | [![Show an error in the code](img/meta-jest.png)](img/meta-jest.png)
 |:---:|:---:|

@@ -2,7 +2,7 @@
 
 Good errors for people to read:
 
-| [![Show an error in the code](img/error_full.png)](img/error_full.png)  | [![Show an error in the code](img/jest.png)](img/jest.png)
+| [![Show an error in the code](img/meta-run.png)](img/meta-run.png)  | [![Show an error in the code](img/meta-jest.png)](img/meta-jest.png)
 |:---:|:---:|
 | An error while running `node app.js` | Same error while testing with `jest` |
 

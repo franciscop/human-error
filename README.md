@@ -1,4 +1,4 @@
-# human-error
+# human-error [![CircleCI](https://circleci.com/gh/franciscop/human-error.svg?style=svg)](https://circleci.com/gh/franciscop/human-error)
 
 Allows you to write errors so people can understand:
 

@@ -4,4 +4,4 @@ machine:
 
 general:
   artifacts:
-    - ./coverage/lcov-report
+    - ./coverage/coverage-final.json

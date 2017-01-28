@@ -4,4 +4,4 @@ machine:
 
 general:
   artifacts:
-    - ./coverage
+    - ./coverage/lcov-report

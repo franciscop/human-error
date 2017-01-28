@@ -1,6 +1,6 @@
 // TODO: properly test this
 const errors = require('./human-error')({
-  url: key => `https://example.com/error#${key}`
+  url: key => `https://example.com/${key}`
 });
 
 describe('human-error', () => {
@@ -8,6 +8,12 @@ describe('human-error', () => {
     expect(errors).not.toBe(undefined);
     expect(errors).not.toBe(null);
     expect(errors).not.toBe(false);
+  });
+
+  it('throws error if not defined', () => {
+    errors.One = () => '';
+    errors.Two = () => '';
+    expect(() => errors.Three()).not.toThrow();
   });
 
   it('can add an error', () => {
@@ -50,6 +56,47 @@ describe('human-error', () => {
   it('sets the url to show', () => {
     errors.SaveOne = () => 'Hello world';
     let msg = errors.SaveOne().message;
-    expect(msg.includes('https://example.com/error#SaveOne')).toBe(true);
+    expect(msg.includes('https://example.com/SaveOne')).toBe(true);
+  });
+
+  it('sets the url to show', () => {
+    const errors = require('./human-error')({ url: 'https://example.com/' });
+    errors.SaveOne = () => 'Hello world';
+    let msg = errors.SaveOne().message;
+    expect(msg.includes('https://example.com/')).toBe(true);
+  });
+});
+
+
+
+const { line, char } = require('./human-error');
+
+describe('helpers', () => {
+  it('works empty', () => {
+    char();
+    expect(char()).toBe('');
+    line();
+    expect(line()).toBe('                                                                            ');
+  });
+
+  it('returns a N char string', () => {
+    expect(char('a', 6).length).toBe(6);
+    expect(char('a', 6)).toBe('aaaaaa');
+  });
+
+  it('returns a N-2 char string', () => {
+    expect(line('a', 10).length).toBe(6);
+    expect(line('a', 10)).toBe('a     ');
+  });
+
+  it('defaults to empty chars', () => {
+    expect(char(undefined, 6).length).toBe(6);
+    expect(char(undefined, 6)).toMatch(/^\s+$/);
+    expect(line()).toMatch(/^\s+$/);
+  });
+
+  it('keeps them whole if too large', () => {
+    let str = Array(100).join(' ');
+    expect(line(str)).toBe(str);
   });
 });

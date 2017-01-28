@@ -1,12 +1,26 @@
 # human-error
 
-Good errors for people to read.
+Good errors for people to read:
 
-First create your error codes:
+![Show an error in the code](img/error_full.png)
+
+
+## Getting started
+
+Install it with NPM:
+
+```bash
+npm install human-error --save
+```
+
+Then create your error codes:
 
 ```js
 // myfun-errors.js
-const errors = require('human-error')({});
+const errors = require('human-error')({
+  // [optional] a url where the error is explained in-depth
+  url: name => `http://example.com/error/${name}`
+});
 
 errors.MissingCallback = () => `
   myFun() expects a callback to be passed but nothing was passed.

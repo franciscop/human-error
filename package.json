@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/franciscop/human-error/issues"
   },
-  "homepage": "https://github.com/franciscop/human-error#readme"
+  "homepage": "https://github.com/franciscop/human-error#readme",
+  "devDependencies": {
+    "jest": "^18.1.0"
+  }
 }

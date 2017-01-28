@@ -1,4 +1,4 @@
-exports.NotDefined = ({ name, available = [] }) => `
+exports.NotDefined = ({ name, available }) => `
   "${name}" error is not defined. This can happen because:
   - You forgot to define the error.
   - You mistyped the error name (they are case-sensitive).

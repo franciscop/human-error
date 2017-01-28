@@ -11,6 +11,7 @@ describe('human-error', () => {
   });
 
   it('throws error if not defined', () => {
+    expect(() => errors.Three()).toThrow();
     errors.One = () => '';
     errors.Two = () => '';
     expect(() => errors.Three()).toThrow();

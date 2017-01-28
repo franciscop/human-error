@@ -2,7 +2,14 @@
 
 Good errors for people to read:
 
-![Show an error in the code](img/meta-error.png)
+![Show an error in the code](img/error_full.png)
+
+> A normal error within your code running with `node app.js`
+
+![Show an error in the code](img/jest.png)
+
+> Same error within testing context of `jest`
+
 
 
 ## Getting started

@@ -2,7 +2,7 @@
 
 Good errors for people to read:
 
-![Show an error in the code](img/error_full.png)
+![Show an error in the code](img/meta-error.png)
 
 
 ## Getting started

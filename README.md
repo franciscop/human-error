@@ -4,7 +4,7 @@ Good errors for people to read:
 
 | [![Show an error in the code](img/error_full.png)](img/error_full.png)  | [![Show an error in the code](img/jest.png)](img/jest.png)
 |:---:|:---:|
-| An error while running with `node app.js` | Same error within testing context of `jest` |
+| An error while running `node app.js` | Same error while testing with `jest` |
 
 
 

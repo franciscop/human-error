@@ -4,4 +4,4 @@ machine:
 
 general:
   artifacts:
-    - ./coverage/coverage-final.json
+    - bash <(curl -s https://codecov.io/bash)

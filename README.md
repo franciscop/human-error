@@ -45,10 +45,10 @@ const errors = require('./myfun-errors');
 
 module.exports = (cb) => {
   if (!cb) {
-    throw new errors.MissingCallback();
+    throw errors.MissingCallback();
   }
   if (!(cb instanceof Function)) {
-    throw new errors.InvalidCallback({ type: typeof cb });
+    throw errors.InvalidCallback({ type: typeof cb });
   }
   cb('Cool library!');
 };

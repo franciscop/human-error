@@ -5,5 +5,5 @@ exports.NotDefined = ({ name, available }) => `
   - There's a problem with this library. Please report it if you find any.
 
   These are the available errors:
-  ${available.length ? '- ' + available.join('\n- ') : '[none available]'}
+  ${available.length ? '- ' + available.join('\n  - ') : '[none available]'}
 `;

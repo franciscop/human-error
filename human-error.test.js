@@ -1,6 +1,9 @@
 // TODO: properly test this
 const errors = require('./human-error')({
-  url: key => `https://example.com/${key}`
+  url: key => `https://example.com/${key}`,
+  extra: {
+    statusCode: 500
+  }
 });
 
 describe('human-error', () => {
@@ -28,56 +31,56 @@ describe('human-error', () => {
   });
 
   it('should return an error', () => {
-    errors.SaveOne = () => 'Hello 世界';
-    expect(errors.SaveOne() instanceof Error).toBe(true);
+    errors['human.test.one'] = (world = '世界') => `Hello ${world}`;
+    expect(errors('human.test.one') instanceof Error).toBe(true);
   });
 
   it('uses default arguments', () => {
-    errors.SaveOne = ({ type = 'a' }) => {
+    errors['human.test.one'] = ({ type = 'a' }) => {
       expect(type).toBe('a');
       return '';
     };
-    errors.SaveOne();
+    errors('human.test.one');
   });
 
   it('can be passed arguments', () => {
-    errors.SaveOne = ({ type = 'a' }) => {
+    errors['human.test.one'] = ({ type = 'a' }) => {
       expect(type).toBe('b');
       return '';
     };
-    errors.SaveOne({ type: 'b' });
+    errors('human.test.one', { type: 'b' });
   });
 
   it('sets the error to show', () => {
-    errors.SaveOne = () => 'Hello world';
-    let msg = errors.SaveOne().message;
+    errors['human.test.b'] = () => 'Hello world';
+    let msg = errors('human.test.b').message;
     expect(msg.includes('Hello world')).toBe(true);
   });
 
   it('sets the url to show', () => {
-    errors.SaveOne = () => 'Hello world';
-    let msg = errors.SaveOne().message;
-    expect(msg.includes('https://example.com/SaveOne')).toBe(true);
+    errors['human.test.one'] = () => 'Hello world';
+    let msg = errors('human.test.one').message;
+    expect(msg.includes('https://example.com/human.test.one')).toBe(true);
   });
 
   it('sets the url to show', () => {
-    const errors = require('./human-error')({ url: 'https://example.com/' });
-    errors.SaveOne = () => 'Hello world';
-    let msg = errors.SaveOne().message;
-    expect(msg.includes('https://example.com/')).toBe(true);
+    const errors = require('./human-error')({ url: 'https://exampleb.com/' });
+    errors['human.test.one'] = () => 'Hello world';
+    let msg = errors('human.test.one').message;
+    expect(msg.includes('https://exampleb.com/')).toBe(true);
   });
 
   it('can generate a plain one without url', () => {
     const errors = require('./human-error')({ plain: true });
-    errors.SaveOne = () => 'Hello world';
-    let msg = errors.SaveOne().message;
+    errors['human.test.one'] = () => 'Hello world';
+    let msg = errors('human.test.one').message;
     expect(msg.includes('┌')).toBe(false);
   });
 
   it('can generate a plain one with url', () => {
     const errors = require('./human-error')({ url: 'https://example.com/', plain: true });
-    errors.SaveOne = () => 'Hello world';
-    let msg = errors.SaveOne().message;
+    errors['human.test.one'] = () => 'Hello world';
+    let msg = errors('human.test.one').message;
     expect(msg.includes('┌')).toBe(false);
   });
 });
